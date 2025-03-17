@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A webpage with enhanced sliders for volume and rate." />
+  <title>Text to speech Conversion</title>
+
+  <!-- Include Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="static/script.js"></script>
+
+  <!-- Custom Font (Optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles (Optional) -->
+  <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+  <!-- Main Container -->
+  <div class="flex w-full h-full">
+    <!-- Left Part: History Section (Smaller Width) -->
+    <div class="w-1/3 p-4 border-r border-gray-300 overflow-y-auto">
+      <h2 class="text-lg font-semibold text-gray-800 mb-2">History</h2>
+      <ul id="history-list" class="space-y-2">
+        <!-- History Items will be dynamically added here -->
+        <li class="p-2 bg-gray-50 rounded-md text-sm text-gray-600">
+          No history yet
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right Part: Input Section (Larger Width) -->
+    <div class="w-2/3 p-6 flex flex-col items-center justify-center space-y-4">
+      <h1 class="text-6xl font-bold text-black-800 mb-2">Text to Speech Conversion</h1>
+      <!-- Text Box -->
+      <textarea id="input-text" placeholder="Enter text here..."
+        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 resize-none h-[80px]"
+        style="height: 167px"></textarea>
+
+      <!-- Dropdowns and Sliders -->
+      <div class="flex flex-col w-full space-y-4">
+        <!-- First Row: Gender and Accent Dropdowns -->
+        <div class="flex space-x-4 w-full">
+          <!-- Gender Dropdown -->
+          <select id="gender-dropdown"
+            class="w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+
+          <!-- Accent Dropdown -->
+          <select id="accent-dropdown"
+            class="w-1/2 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
+            <option value="">Select Accent</option>
+            <option value="indian">Indian</option>
+            <option value="american">American</option>
+            <option value="british">British</option>
+            <option value="australian">Australian</option>
+            <option value="canadian">Canadian</option>
+            <option value="irish">Irish</option>
+          </select>
+        </div>
+
+        <!-- Second Row: Volume and Rate Sliders -->
+        <div class="flex flex-col space-y-2 w-full">
+          <!-- Volume Slider -->
+          <div class="flex flex-col space-y-1">
+            <div class="flex justify-between items-center">
+              <label for="volume-slider" class="text-sm text-gray-700">Volume</label>
+              <span id="volume-value" class="text-sm text-gray-700">50</span>
+            </div>
+            <input type="range" id="volume-slider" min="0" max="100" value="50" class="w-full" />
+          </div>
+
+          <!-- Rate Slider -->
+          <div class="flex flex-col space-y-1">
+            <div class="flex justify-between items-center">
+              <label for="rate-slider" class="text-sm text-gray-700">Rate</label>
+              <span id="rate-value" class="text-sm text-gray-700">1x</span>
+            </div>
+            <input type="range" id="rate-slider" min="0.5" max="2" step="0.1" value="1" class="w-full" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Convert Button -->
+      <button id="convert-button"
+        class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300">
+        Convert
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>
